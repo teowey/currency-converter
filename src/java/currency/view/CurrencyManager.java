@@ -8,12 +8,14 @@ package currency.view;
 import currency.model.ConversionDTO;
 import currency.controller.CurrencyFacade;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import javax.faces.bean.ManagedBean;
 /**
  *
  * @author teowey
@@ -33,14 +35,16 @@ public class CurrencyManager implements Serializable {
     private static final long serialVersionUID = 16247164405L;
     @EJB
     private CurrencyFacade currencyFacade;
-    private double currentConversion;
-    private double inputAmount;
-    private String conversion;
-    private double convertedAmount;
+    
+    private BigDecimal inputAmount;
+    private int id;
+    private BigDecimal convertedAmount;
 
     @Inject
     private Conversation conversation;
     private Exception conversionFailure;
+    private String fromCur;
+    private String toCur;
 
     private void startConversation() {
         if (conversation.isTransient()) {
@@ -63,6 +67,7 @@ public class CurrencyManager implements Serializable {
     /**
      * Returns <code>false</code> if the latest transaction failed, otherwise
      * <code>true</code>.
+     * @return 
      */
     public boolean getSuccess() {
         return conversionFailure == null;
@@ -70,43 +75,61 @@ public class CurrencyManager implements Serializable {
 
     /**
      * Returns the latest thrown exception.
+     * @return 
      */
     public Exception getException() {
         return conversionFailure;
     }
 
     // Methods to be used on the web page index.xhtml
-    public double getInputAmount() {
+    public BigDecimal getInputAmount() {
         return inputAmount;
     }
 
-    public void setInputAmount(double inputAmount) {
+    public void setInputAmount(BigDecimal inputAmount) {
         this.inputAmount = inputAmount;
     }
 
-    public String getConversion() {
-        return conversion;
+    public int getId() {
+        return id;
     }
 
-    public void setConversion(String conversion) {
-        this.conversion = conversion;
+    public void setConversion(int id) {
+        this.id = id;
     }
 
-    public double getConvertedAmount() {
+    public BigDecimal getConvertedAmount() {
         return convertedAmount;
     }
 
-    public void setConvertedAmount(double convertedAmount) {
+    public void setConvertedAmount(BigDecimal convertedAmount) {
         this.convertedAmount = convertedAmount;
     }
 
+    public String getFromCur() {
+        return fromCur;
+    }
+
+    public void setFromCur(String fromCur) {
+        this.fromCur = fromCur;
+    }
+
+    public String getToCur() {
+        return toCur;
+    }
+
+    public void setToCur(String toCur) {
+        this.toCur = toCur;
+    }
+    
     // Button logic
-    private void convertTo() {
+    public void convertTo() {
         startConversation();
         conversionFailure = null;
         try {
-            convertedAmount = currencyFacade.convertTo(inputAmount, conversion);
-        } catch (Exception e) {
+            convertedAmount = currencyFacade.convertTo(inputAmount, fromCur, toCur);
+        } 
+        catch (Exception e) {
             stopConversation();
             handleException(e);
         }

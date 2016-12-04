@@ -5,6 +5,8 @@
  */
 package currency.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author teowey
@@ -19,12 +21,12 @@ public interface ConversionDTO {
     /* Gets the amount entered in the web page and 
     *  convert to the chosen conversion
     */
-    double getConversion(String conversion);
+    //double getConversion(String conversion);
     
-    Integer getId();
+    Integer getConversionId();
     
-    //double getValue();
+    BigDecimal getValue();
 
-    public double getRate(String conversion);
+    //public double getRate(String conversion);
     
 }

@@ -6,9 +6,9 @@
 package currency.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -18,70 +18,33 @@ import javax.persistence.Id;
 @Entity
 public class Rate implements ConversionDTO, Serializable {
 
-    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue
-    private Integer id;
-    private String conversion;
+    private Integer conversionid;
+    
     private double rate;
-    private double value;
+    private BigDecimal value;
+    
+    private String fromCur;
+    private String toCur;
     /**
     * Creates a new instance of Account
     */
     public Rate() {
     }
 
-    /*
-    * Constructor used by CashierFacade to create a new entity.
-    */
-    public Rate(String conversion, double rate) {
-        this.conversion = conversion;
-        this.rate = rate;
-    }
-
     @Override
-    public Integer getId() {
-        return id;
+    public Integer getConversionId() {
+        return conversionid;
     }
     
+    public void setConversionId(Integer conversionid) {
+        this.conversionid = conversionid;
+    }
     @Override
-    public double getConversion(String conversion) {
-        return rate;
-    }
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-//    @Override
-//    public int hashCode() {
-//        int hash = 0;
-//        hash += (id != null ? id.hashCode() : 0);
-//        return hash;
-//    }
-//
-//    @Override
-//    public boolean equals(Object object) {
-//        // TODO: Warning - this method won't work in the case the id fields are not set
-//        if (!(object instanceof Rate)) {
-//            return false;
-//        }
-//        Rate other = (Rate) object;
-//        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "currency.model.ConversionEntity[ id=" + id + " ]";
-//    }
-//    
-    
-    public void setConversion(String conversion, double rate) {
-        this.conversion = conversion;
-        this.rate = rate;
+    public BigDecimal getValue() {
+        return value;
     }
     
     public void setRate(double rate) {
@@ -92,13 +55,20 @@ public class Rate implements ConversionDTO, Serializable {
         return rate;
     }
     
-    
-//    /* Business logic */
-//    @Override
-//    public double convertTo(double amount, String conversion) {
-//        
-//         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+    public String getFromCur() {
+        return fromCur;
+    }
 
-    
+    public void setFromCur(String from) {
+        this.fromCur = from;
+    }
+
+    public String getToCur() {
+        return toCur;
+    }
+
+    public void setToCur(String to) {
+        this.toCur = to;
+    }
+
 }
