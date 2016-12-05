@@ -6,6 +6,9 @@
             <file>file:/Users/teowey/KTH/Period4_2015/ID2212_Network_Programming_with_Java/Homework4/homework4/web/index.xhtml</file>
             <file>file:/Users/teowey/KTH/Period4_2015/ID2212_Network_Programming_with_Java/Homework4/homework4/src/java/currency/view/CurrencyManager.java</file>
             <file>file:/Users/teowey/KTH/Period4_2015/ID2212_Network_Programming_with_Java/Homework4/homework4/web/error.xhtml</file>
+            <file>file:/Users/teowey/KTH/Period4_2015/ID2212_Network_Programming_with_Java/Homework4/homework4/src/java/currency/controller/CurrencyFacade.java</file>
+            <file>file:/Users/teowey/KTH/Period4_2015/ID2212_Network_Programming_with_Java/Homework4/homework4/src/java/currency/model/Rate.java</file>
+            <file>file:/Users/teowey/KTH/Period4_2015/ID2212_Network_Programming_with_Java/Homework4/homework4/src/java/currency/model/ConversionDTO.java</file>
         </group>
     </open-files>
 </project-private>

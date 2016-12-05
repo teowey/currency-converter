@@ -5,7 +5,7 @@
  */
 package currency.model;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 
 /**
  *
@@ -25,8 +25,8 @@ public interface ConversionDTO {
     
     Integer getConversionId();
     
-    BigDecimal getValue();
+    //double getValue();
 
-    //public double getRate(String conversion);
+    public double getRate();
     
 }

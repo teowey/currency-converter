@@ -13,7 +13,7 @@
          <h:form>
             <h3>Choose the conversion</h3>
             <p>
-                <h:outputLabel for="input" value="Enter the amount: "/>
+                <h:outputLabel for="inputAmount" value="Enter the amount: "/>
                 <h:inputText id="inputAmount" value="#{currencyManager.inputAmount}"/>
             </p>
             <p>
@@ -21,16 +21,22 @@
                 to
                 <h:inputText id="toCur" value="#{currencyManager.toCur}"/>
                 
-                <h:commandButton value="Convert" action="#{currencyManager.convertTo}"/>                
+                <h:commandButton value="Convert" action="#{currencyManager.convertTo()}"/>                
             </p>
             <p>
-                <h:outputLabel for="output" value="Converted amount: "/>
-                <h:outputText id="output" value="#{conversionManager.convertedValue}"/>
+                <h:outputLabel for="convertedAmount" value="Converted amount: "/>
+                <h:outputText id="convertedAmount" value="#{currencyManager.convertedAmount}"/>
                 <br />
                 <br />
+            </p>            
+            <h3> View Rates </h3>
+            <p>
+                <h:commandButton value="View All Rates" action="#{currencyManager.viewRates()}"/>
             </p>
-            
-            <hr/>
+            <p>
+                <h:outputLabel for="allRates" value=""/>
+                <h:outputText id="allRates" value="#{currencyManager.allRates}"/>
+            </p>
          </h:form>
         
     </h:body>

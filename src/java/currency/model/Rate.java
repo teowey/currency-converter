@@ -6,7 +6,7 @@
 package currency.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,54 +21,58 @@ public class Rate implements ConversionDTO, Serializable {
     
     @Id
     @GeneratedValue
-    private Integer conversionid;
+    private Integer conversionId;
     
     private double rate;
-    private BigDecimal value;
+    //private BigDecimal value;
     
-    private String fromCur;
-    private String toCur;
+    private String fromCurrency;
+    private String toCurrency;
     /**
     * Creates a new instance of Account
     */
     public Rate() {
     }
+    
+    public Rate(Integer conversionId, String fromCurrency, String toCurrency, double rate) {
+        this.conversionId = conversionId;
+        this.fromCurrency = fromCurrency;
+        this.toCurrency = toCurrency;
+        this.rate = rate;
+        
+    }
 
     @Override
     public Integer getConversionId() {
-        return conversionid;
+        return conversionId;
     }
     
     public void setConversionId(Integer conversionid) {
-        this.conversionid = conversionid;
-    }
-    @Override
-    public BigDecimal getValue() {
-        return value;
+        this.conversionId = conversionid;
     }
     
     public void setRate(double rate) {
         this.rate = rate;
     }
-    
-    public double getRate(String conversion) {
+    @Override
+    public double getRate() {
         return rate;
     }
     
-    public String getFromCur() {
-        return fromCur;
+    public String getFromCurrency() {
+        return fromCurrency;
     }
 
-    public void setFromCur(String from) {
-        this.fromCur = from;
+    public void setFromCurrency(String fromCurrency) {
+        this.fromCurrency = fromCurrency;
     }
 
-    public String getToCur() {
-        return toCur;
+    public String getToCurrency() {
+        return toCurrency;
     }
 
-    public void setToCur(String to) {
-        this.toCur = to;
+    public void setToCurrency(String toCurrency) {
+        this.toCurrency = toCurrency;
     }
 
 }

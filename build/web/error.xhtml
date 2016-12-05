@@ -9,11 +9,11 @@
     <h:body>
         <h1>Conversion Failed</h1>
         <c:choose>
-            <c:when test="#{currencyManager.exception.cause != null}">
-                <h3><h:outputText value="#{currencyManager.exception.cause.message}"/></h3>
+            <c:when test="#{ConversionRateManager.exception.cause != null}">
+                <h3><h:outputText value="#{ConversionRateManager.exception.cause.message}"/></h3>
             </c:when>
             <c:otherwise>
-                <h3><h:outputText value="#{currencyManager.exception.message}"/></h3>
+                <h3><h:outputText value="#{ConversionRateManager.exception.message}"/></h3>
             </c:otherwise>
         </c:choose>
         <a href="index.xhtml">Back to main page</a>
